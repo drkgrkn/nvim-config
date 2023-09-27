@@ -31,6 +31,7 @@ local on_attach = function(_, bufnr)
 
     nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
     nmap('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
+    nmap('E', vim.diagnostic.open_float, 'Open Diagnostic Float')
 
     nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
     nmap('<leader>wa', vim.lsp.buf.add_workspace_folder, '[W]orkspace [A]dd Folder')
@@ -44,7 +45,7 @@ local on_attach = function(_, bufnr)
     end, { desc = "Format current buffer with LSP" })
 
     vim.api.nvim_create_autocmd({ "BufWritePre" }, {
-        pattern = "*.go",
+        pattern = { "*.go", "*.rs" },
         callback = function()
             local params = vim.lsp.util.make_range_params()
             params.context = { only = { "source.organizeImports" } }
