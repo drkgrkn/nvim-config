@@ -1,5 +1,7 @@
 vim.g.mapleader = " "
 
+vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
+
 vim.keymap.set("n", "<leader>x", vim.cmd.Ex)
 
 vim.keymap.set("v", "J", ":m '>+1<cr>gv=gv")

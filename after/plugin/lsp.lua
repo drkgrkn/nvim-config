@@ -45,7 +45,7 @@ local on_attach = function(_, bufnr)
     end, { desc = "Format current buffer with LSP" })
 
     vim.api.nvim_create_autocmd({ "BufWritePre" }, {
-        pattern = { "*.go", "*.rs" },
+        pattern = { "*.go" },
         callback = function()
             local params = vim.lsp.util.make_range_params()
             params.context = { only = { "source.organizeImports" } }
@@ -86,6 +86,13 @@ local servers = {
         }
     }
 }
+
+lsp.set_sign_icons({
+    error = '✘',
+    warn = '▲',
+    hint = '⚑',
+    info = '»'
+})
 
 require("neodev").setup()
 
