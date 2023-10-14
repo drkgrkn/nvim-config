@@ -18,6 +18,7 @@ vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = '[S]earch by [G]re
 vim.keymap.set('n', '<leader>sd', function()
         builtin.diagnostics({ bufnr = 0 })
     end,
-    { desc = '[S]earch [D]iagnostics' })
+    { desc = '[S]earch [D]iagnostics' }
+)
 vim.keymap.set('n', '<leader>swd', builtin.diagnostics, { desc = '[S]earch [W]orkspace [D]iagnostics' })
 vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]resume' })
