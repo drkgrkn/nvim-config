@@ -4,13 +4,21 @@ lsp.extend_lspconfig()
 lsp.preset("recommended")
 
 local cmp = require("cmp")
-local cmp_select = { behavior = cmp.SelectBehavior.Select }
-local cmp_mappings = lsp.defaults.cmp_mappings {
-    ["<C-p>"] = cmp.mapping.select_prev_item(cmp_select),
-    ["<C-n>"] = cmp.mapping.select_next_item(cmp_select),
-    ["<C-y>"] = cmp.mapping.confirm({ select = true }),
-    ["<C-Space>"] = cmp.mapping.complete(),
+cmp.setup {
+    sources = cmp.config.sources({
+        { name = 'nvim_lsp' },
+    }, {
+        { name = 'buffer' },
+    }),
+    mapping = {
+        ["<C-e>"] = cmp.mapping.abort(),
+        ["<C-p>"] = cmp.mapping.select_prev_item({ behavior = 'select' }),
+        ["<C-n>"] = cmp.mapping.select_next_item({ behavior = 'select' }),
+        ["<C-y>"] = cmp.mapping.confirm({ select = true }),
+        ["<C-Space>"] = cmp.mapping.complete(),
+    }
 }
+
 local on_attach = function(_, bufnr)
     local nmap = function(keys, func, desc)
         if desc then
