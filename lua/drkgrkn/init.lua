@@ -14,6 +14,7 @@ return {
     import("neodev"),
     import("fugitive"),
     import("rhubarb"),
+    import("rainbow"),
     import("which-key"),
     import("lualine"),
 }

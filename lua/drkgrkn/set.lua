@@ -1,5 +1,11 @@
 vim.opt.nu = true
 vim.opt.relativenumber = true
+vim.opt.list = true
+vim.opt.listchars = {
+    eol = "⏎",
+    space = "⸱",
+}
+
 
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
