@@ -3,6 +3,12 @@ lsp.extend_lspconfig()
 
 lsp.preset("recommended")
 
+vim.filetype.add({
+    extension = {
+        templ = "templ",
+    },
+})
+
 local cmp = require("cmp")
 cmp.setup {
     sources = cmp.config.sources({
@@ -57,7 +63,7 @@ local on_attach = function(_, bufnr)
     end, { desc = "Format current buffer with LSP" })
 
     vim.api.nvim_create_autocmd({ "BufWritePre" }, {
-        pattern = { "*.go" },
+        pattern = { "*.go", "*.templ" },
         callback = function()
             local params = vim.lsp.util.make_range_params()
             params.context = { only = { "source.organizeImports" } }
@@ -87,6 +93,17 @@ end
 local servers = {
     clangd = {},
     gopls = {},
+    templ = {
+        filetypes = { "templ" },
+    },
+    tailwindcss = {
+        filetypes = { "templ", "tsx" },
+        init_options = {
+            userLanguages = {
+                templ = "html",
+            },
+        },
+    },
     pyright = {},
     rust_analyzer = {},
     tsserver = {},
