@@ -7,8 +7,8 @@ local function import(plugin)
 end
 return {
     import("telescope"),
-    --import("dracula"),
-    import("catppuccin"),
+    import("dracula"),
+    --import("catppuccin"),
     import("treesitter"),
     import("lsp-zero"),
     import("neodev"),
