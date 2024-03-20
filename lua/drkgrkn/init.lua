@@ -6,6 +6,7 @@ local function import(plugin)
     return require("drkgrkn.plugins." .. plugin)
 end
 return {
+    import("aerial"),
     import("telescope"),
     import("dracula"),
     --import("catppuccin"),
