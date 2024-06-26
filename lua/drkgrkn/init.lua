@@ -18,4 +18,5 @@ return {
     import("rainbow"),
     import("which-key"),
     import("lualine"),
+    import("harpoon"),
 }
